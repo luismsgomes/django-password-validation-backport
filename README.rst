@@ -1,4 +1,4 @@
 django-password-validation-backport
 ===================================
 
-Backport of django password validation to Django &lt; 1.9
+Backport of django password validation to Django < 1.9
