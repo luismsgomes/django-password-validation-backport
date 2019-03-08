@@ -29,7 +29,6 @@ def inject_password_validation_into_django_user_model():
         __real_save(self, *args, **kwargs)
         if self.password is not None:
             password_changed(self.password, self)
-            self.password = None
 
     User.save = save
 
