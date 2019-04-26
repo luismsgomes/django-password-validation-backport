@@ -13,7 +13,7 @@ from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.utils import lru_cache
 from django.utils._os import upath
 from django.utils.encoding import force_text
-from django.utils.html import format_html
+from django.utils.html import format_html, format_html_join
 from django.utils.module_loading import import_string
 from django.utils.six import string_types
 from django.utils.translation import ugettext_lazy as _, ungettext_lazy
@@ -109,8 +109,10 @@ def password_validators_help_text_html(password_validators=None):
     in an <ul>.
     """
     help_texts = password_validators_help_texts(password_validators)
-    help_items = [format_html('<li>{}</li>', help_text) for help_text in help_texts]
-    return '<ul>%s</ul>' % ''.join(help_items) if help_items else ''
+    if not help_texts:
+        return ''
+    help_items = format_html_join('', '<li>{}</li>', [(help_text,) for help_text in help_texts])
+    return format_html('<ul>{}</ul>', help_items)
 
 
 class MinimumLengthValidator(object):
