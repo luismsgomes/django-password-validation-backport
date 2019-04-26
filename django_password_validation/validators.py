@@ -22,6 +22,9 @@ from django.utils.translation import ugettext as _, ungettext
 DEFAULT_AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django_password_validation.UserAttributeSimilarityValidator',
+        'OPTIONS': {
+            'max_similarity': .5,
+        }
     }, {
         'NAME': 'django_password_validation.MinimumLengthValidator',
         'OPTIONS': {
