@@ -167,7 +167,8 @@ class UserAttributeSimilarityValidator(object):
                 continue
             value_parts = re.split('\W+', value) + [value]
             for value_part in value_parts:
-                if SequenceMatcher(a=password.lower(), b=value_part.lower()).quick_ratio() > self.max_similarity:
+                similarity = SequenceMatcher(a=password.lower(), b=value_part.lower()).quick_ratio()
+                if similarity > self.max_similarity or similarity == 1 or self.max_similarity == 0:
                     verbose_name = force_text(user._meta.get_field(attribute_name).verbose_name)
                     raise ValidationError(
                         _("The password is too similar to the %(verbose_name)s."),
