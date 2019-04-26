@@ -22,10 +22,20 @@ django.setup()
 
 from django.contrib.auth.models import User
 from django_password_validation import (
-    CommonPasswordValidator, MinimumLengthValidator, NumericPasswordValidator,
-    UserAttributeSimilarityValidator, get_default_password_validators,
-    get_password_validators, password_changed,
-    password_validators_help_text_html, password_validators_help_texts,
+    CommonPasswordValidator,
+    MinimumLengthValidator,
+    NumericPasswordValidator,
+    UserAttributeSimilarityValidator,
+    AtLeastOneDigitValidator,
+    AtLeastOnePunctuationCharacterValidator,
+    AtLeastOneUppercaseCharacterValidator,
+    AtLeastOneLowercaseCharacterValidator,
+    NoRepeatsValidator,
+    get_default_password_validators,
+    get_password_validators,
+    password_changed,
+    password_validators_help_text_html,
+    password_validators_help_texts,
     validate_password,
 )
 from django.core.exceptions import ValidationError
@@ -242,4 +252,89 @@ class NumericPasswordValidatorTest(SimpleTestCase):
         self.assertEqual(
             NumericPasswordValidator().get_help_text(),
             "Your password can't be entirely numeric."
+        )
+
+
+class AtLeastOneDigitTest(SimpleTestCase):
+    def test_validate(self):
+        expected_error = "This password does not contain a digit."
+        self.assertIsNone(AtLeastOneDigitValidator().validate('abc123'))
+
+        with self.assertRaises(ValidationError) as cm:
+            AtLeastOneDigitValidator().validate('abcdefg')
+        self.assertEqual(cm.exception.messages, [expected_error])
+        self.assertEqual(cm.exception.error_list[0].code, 'password_without_digit')
+
+    def test_help_text(self):
+        self.assertEqual(
+            AtLeastOneDigitValidator().get_help_text(),
+            "Your password must contain at least one digit."
+        )
+
+
+class AtLeastOnePunctuationCharacterTest(SimpleTestCase):
+    def test_validate(self):
+        expected_error = "This password does not contain a punctuation character."
+        self.assertIsNone(AtLeastOnePunctuationCharacterValidator().validate('a safe-password'))
+
+        with self.assertRaises(ValidationError) as cm:
+            AtLeastOnePunctuationCharacterValidator().validate('123abc')
+        self.assertEqual(cm.exception.messages, [expected_error])
+        self.assertEqual(cm.exception.error_list[0].code, 'password_without_punctuation')
+
+    def test_help_text(self):
+        self.assertEqual(
+            AtLeastOnePunctuationCharacterValidator().get_help_text(),
+            "Your password must contain at least one punctuation character."
+        )
+
+
+class AtLeastOneUppercaseCharacterTest(SimpleTestCase):
+    def test_validate(self):
+        expected_error = "This password does not contain an uppercase character."
+        self.assertIsNone(AtLeastOneUppercaseCharacterValidator().validate('A good password'))
+
+        with self.assertRaises(ValidationError) as cm:
+            AtLeastOneUppercaseCharacterValidator().validate('a bad password')
+        self.assertEqual(cm.exception.messages, [expected_error])
+        self.assertEqual(cm.exception.error_list[0].code, 'password_without_uppercase')
+
+    def test_help_text(self):
+        self.assertEqual(
+            AtLeastOneUppercaseCharacterValidator().get_help_text(),
+            "Your password must contain at least one uppercase character."
+        )
+
+
+class AtLeastOneLowercaseCharacterTest(SimpleTestCase):
+    def test_validate(self):
+        expected_error = "This password does not contain a lowercase character."
+        self.assertIsNone(AtLeastOneLowercaseCharacterValidator().validate('a-safe-password'))
+
+        with self.assertRaises(ValidationError) as cm:
+            AtLeastOneLowercaseCharacterValidator().validate('42424242')
+        self.assertEqual(cm.exception.messages, [expected_error])
+        self.assertEqual(cm.exception.error_list[0].code, 'password_without_lowercase')
+
+    def test_help_text(self):
+        self.assertEqual(
+            AtLeastOneLowercaseCharacterValidator().get_help_text(),
+            "Your password must contain at least one lowercase character."
+        )
+
+
+class NoRepeatsTest(SimpleTestCase):
+    def test_validate(self):
+        expected_error = "This password contains a character repeated more than 2 times in a row."
+        self.assertIsNone(NoRepeatsValidator().validate('a-safe-password'))
+
+        with self.assertRaises(ValidationError) as cm:
+            NoRepeatsValidator().validate('is this is a baaad password?')
+        self.assertEqual(cm.exception.messages, [expected_error])
+        self.assertEqual(cm.exception.error_list[0].code, 'password_contains_repeats')
+
+    def test_help_text(self):
+        self.assertEqual(
+            NoRepeatsValidator().get_help_text(),
+            "Your password can't contain a character repeated more than 2 times in a row."
         )

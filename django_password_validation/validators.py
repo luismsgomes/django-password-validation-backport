@@ -6,6 +6,8 @@ from __future__ import unicode_literals
 import gzip
 import os
 import re
+import string
+
 from difflib import SequenceMatcher
 
 from django.conf import settings
@@ -34,7 +36,20 @@ DEFAULT_AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django_password_validation.CommonPasswordValidator',
     }, {
         'NAME': 'django_password_validation.NumericPasswordValidator',
-    },
+    }, {
+        'NAME': 'django_password_validation.AtLeastOneDigit',
+    }, {
+        'NAME': 'django_password_validation.AtLeastOnePunctuationCharacter',
+    }, {
+        'NAME': 'django_password_validation.AtLeastOneUppercaseCharacter',
+    }, {
+        'NAME': 'django_password_validation.AtLeastOneLowercaseCharacter',
+    # }, {
+    #     'NAME': 'django_password_validation.NoRepeats',
+    #     'OPTIONS': {
+    #         'max_repeats': 2,
+    #     }
+    }
 ]
 
 
@@ -170,6 +185,7 @@ class UserAttributeSimilarityValidator(object):
             value_parts = re.split('\W+', value) + [value]
             for value_part in value_parts:
                 similarity = SequenceMatcher(a=password.lower(), b=value_part.lower()).quick_ratio()
+                print "similarity between %r and %r is %r" % (password.lower(), value_part.lower(), similarity)
                 if similarity > self.max_similarity or similarity == 1 or self.max_similarity == 0:
                     verbose_name = force_text(user._meta.get_field(attribute_name).verbose_name)
                     raise ValidationError(
@@ -227,3 +243,83 @@ class NumericPasswordValidator(object):
 
     def get_help_text(self):
         return _("Your password can't be entirely numeric.")
+
+
+class AtLeastOneDigitValidator(object):
+    """
+    Validate whether the password contains at least one digit.
+    """
+    def validate(self, password, user=None):
+        if not any(c.isdigit() for c in password):
+            raise ValidationError(
+                _("This password does not contain a digit."),
+                code='password_without_digit',
+            )
+
+    def get_help_text(self):
+        return _("Your password must contain at least one digit.")
+
+
+class AtLeastOnePunctuationCharacterValidator(object):
+    """
+    Validate whether the password contains at least one punctuation character.
+    """
+    def validate(self, password, user=None):
+        if not any(c == ' ' or c in string.punctuation for c in password):
+            raise ValidationError(
+                _("This password does not contain a punctuation character."),
+                code='password_without_punctuation',
+            )
+
+    def get_help_text(self):
+        return _("Your password must contain at least one punctuation character.")
+
+
+class AtLeastOneUppercaseCharacterValidator(object):
+    """
+    Validate whether the password contains at least one uppercase character.
+    """
+    def validate(self, password, user=None):
+        if not any(c.isupper() for c in password):
+            raise ValidationError(
+                _("This password does not contain an uppercase character."),
+                code='password_without_uppercase',
+            )
+
+    def get_help_text(self):
+        return _("Your password must contain at least one uppercase character.")
+
+
+class AtLeastOneLowercaseCharacterValidator(object):
+    """
+    Validate whether the password contains at least one lowercase character.
+    """
+    def validate(self, password, user=None):
+        if not any(c.islower() for c in password):
+            raise ValidationError(
+                _("This password does not contain a lowercase character."),
+                code='password_without_lowercase',
+            )
+
+    def get_help_text(self):
+        return _("Your password must contain at least one lowercase character.")
+
+
+class NoRepeatsValidator(object):
+    """
+    Validate whether the password does not contain a character repeated more than max_repeats times in a row.
+    """
+    def __init__(self, max_repeats=2):
+        self.max_repeats = max_repeats
+
+    def validate(self, password, user=None):
+        chars = set(password)
+        for c in chars:
+            if c*(self.max_repeats+1) in password:
+                raise ValidationError(
+                    (_("This password contains a character repeated more than %d times in a row.") % self.max_repeats),
+                    code='password_contains_repeats',
+                )
+
+    def get_help_text(self):
+        return _("Your password can't contain a character repeated more than %d times in a row.") % self.max_repeats

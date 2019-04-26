@@ -13,7 +13,12 @@ from .validators import \
     MinimumLengthValidator, \
     UserAttributeSimilarityValidator, \
     CommonPasswordValidator, \
-    NumericPasswordValidator
+    NumericPasswordValidator, \
+    AtLeastOneDigitValidator, \
+    AtLeastOnePunctuationCharacterValidator, \
+    AtLeastOneUppercaseCharacterValidator, \
+    AtLeastOneLowercaseCharacterValidator, \
+    NoRepeatsValidator
 
 from .middleware import \
     DjangoPasswordValidationMiddleware
