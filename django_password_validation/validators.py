@@ -25,7 +25,7 @@ DEFAULT_AUTH_PASSWORD_VALIDATORS = [
     }, {
         'NAME': 'django_password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length': 9,
+            'min_length': 10,
         }
     }, {
         'NAME': 'django_password_validation.CommonPasswordValidator',
