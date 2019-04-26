@@ -1,5 +1,3 @@
-# copied from Django 1.9 django.contrib.auth.password_validation
-# 2019-04-24: updated list of common passwords from Django 2.2
 
 from __future__ import unicode_literals
 

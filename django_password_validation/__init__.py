@@ -1,7 +1,22 @@
-# code in django_password_validation_backport.validators was backported from
+# Password validators backported from django.contrib.auth.password_validation (Django 1.9)
+#
+# Changelog:
+#
+# 0.1.6: added simple character-based validators:
+#    AtLeastOneDigitValidator
+#    AtLeastOnePunctuationCharacterValidator
+#    AtLeastOneUppercaseCharacterValidator
+#    AtLeastOneLowercaseCharacterValidator
+#    NoRepeatsValidator
 # 0.1.5: added unit tests; minor fixes
-# 0.1.4: django.contrib.auth.password_validation (Django 1.9)
-__version__ = "0.1.5"
+# 0.1.4: updated list of common passwords from Django 2.2
+# 0.1.3: first public release with 4 validators:
+#    MinimumLengthValidator
+#    UserAttributeSimilarityValidator
+#    CommonPasswordValidator
+#    NumericPasswordValidator
+
+__version__ = "0.1.6"
 
 from .validators import \
     get_default_password_validators, \
