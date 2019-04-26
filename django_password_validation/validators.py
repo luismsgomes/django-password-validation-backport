@@ -35,15 +35,15 @@ DEFAULT_AUTH_PASSWORD_VALIDATORS = [
     }, {
         'NAME': 'django_password_validation.NumericPasswordValidator',
     }, {
-        'NAME': 'django_password_validation.AtLeastOneDigit',
+        'NAME': 'django_password_validation.AtLeastOneDigitValidator',
     }, {
-        'NAME': 'django_password_validation.AtLeastOnePunctuationCharacter',
+        'NAME': 'django_password_validation.AtLeastOnePunctuationCharacterValidator',
     }, {
-        'NAME': 'django_password_validation.AtLeastOneUppercaseCharacter',
+        'NAME': 'django_password_validation.AtLeastOneUppercaseCharacterValidator',
     }, {
-        'NAME': 'django_password_validation.AtLeastOneLowercaseCharacter',
+        'NAME': 'django_password_validation.AtLeastOneLowercaseCharacterValidator',
     # }, {
-    #     'NAME': 'django_password_validation.NoRepeats',
+    #     'NAME': 'django_password_validation.NoRepeatsValidator',
     #     'OPTIONS': {
     #         'max_repeats': 2,
     #     }

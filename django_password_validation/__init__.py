@@ -2,6 +2,7 @@
 #
 # Changelog:
 #
+# 0.1.7: bugfix in default configuration
 # 0.1.6: added simple character-based validators:
 #    AtLeastOneDigitValidator
 #    AtLeastOnePunctuationCharacterValidator
@@ -16,7 +17,7 @@
 #    CommonPasswordValidator
 #    NumericPasswordValidator
 
-__version__ = "0.1.6"
+__version__ = "0.1.7"
 
 from .validators import \
     get_default_password_validators, \
