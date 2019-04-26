@@ -183,7 +183,6 @@ class UserAttributeSimilarityValidator(object):
             value_parts = re.split('\W+', value) + [value]
             for value_part in value_parts:
                 similarity = SequenceMatcher(a=password.lower(), b=value_part.lower()).quick_ratio()
-                print "similarity between %r and %r is %r" % (password.lower(), value_part.lower(), similarity)
                 if similarity > self.max_similarity or similarity == 1 or self.max_similarity == 0:
                     verbose_name = force_text(user._meta.get_field(attribute_name).verbose_name)
                     raise ValidationError(
