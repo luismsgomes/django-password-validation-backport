@@ -41,6 +41,7 @@ from django_password_validation import (
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.test import SimpleTestCase, TestCase, override_settings
+from django.utils import translation
 from django.utils.html import conditional_escape
 
 
@@ -338,3 +339,24 @@ class NoRepeatsTest(SimpleTestCase):
             NoRepeatsValidator().get_help_text(),
             "Your password can't contain a character repeated more than 2 times in a row."
         )
+
+
+@override_settings(
+    AUTH_PASSWORD_VALIDATORS=[{
+        'NAME': 'django_password_validation.MinimumLengthValidator',
+        'OPTIONS': {'min_length': 2},
+    }],
+    INSTALLED_APPS=[
+        'django_password_validation',
+    ]
+)
+class LocalizationTest(SimpleTestCase):
+    def test_portuguese_translation(self):
+        msg_too_short = u'Esta palavra passe é demasiado curta. Deverá conter pelo menos 2 caracteres.'
+        with translation.override('pt'):
+            get_default_password_validators.cache_clear()
+            with self.assertRaises(ValidationError) as cm:
+                validate_password('a')
+            get_default_password_validators.cache_clear()
+            self.assertEqual(cm.exception.error_list[0].code, 'password_too_short')
+            self.assertEqual(cm.exception.messages, [msg_too_short])

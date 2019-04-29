@@ -2,6 +2,9 @@
 #
 # Changelog:
 #
+# 0.3.0: deploy as application instead of middleware
+#        added (mostly empty) localization files for en_IE, es_ES, fr_FR, ga_IE and pt_PT
+#        added scripts to extract/compile PO files
 # 0.2.0: major bugfix
 # 0.1.6: added simple character-based validators:
 #    AtLeastOneDigitValidator
@@ -17,7 +20,7 @@
 #    CommonPasswordValidator
 #    NumericPasswordValidator
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 from .validators import \
     get_default_password_validators, \
@@ -35,6 +38,3 @@ from .validators import \
     AtLeastOneUppercaseCharacterValidator, \
     AtLeastOneLowercaseCharacterValidator, \
     NoRepeatsValidator
-
-from .middleware import \
-    DjangoPasswordValidationMiddleware

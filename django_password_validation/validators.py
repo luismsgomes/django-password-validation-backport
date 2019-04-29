@@ -141,7 +141,7 @@ class MinimumLengthValidator(object):
                 ungettext_lazy(
                     "This password is too short. It must contain at least %(min_length)d character.",
                     "This password is too short. It must contain at least %(min_length)d characters.",
-                    self.min_length
+                    "min_length"
                 ),
                 code='password_too_short',
                 params={'min_length': self.min_length},
@@ -151,7 +151,7 @@ class MinimumLengthValidator(object):
         return ungettext_lazy(
             "Your password must contain at least %(min_length)d character.",
             "Your password must contain at least %(min_length)d characters.",
-            self.min_length
+            "min_length"
         ) % {'min_length': self.min_length}
 
 

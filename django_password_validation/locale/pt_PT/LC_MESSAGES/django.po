@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-29 14:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: validators.py:142
+#, python-format
+msgid ""
+"This password is too short. It must contain at least %(min_length)d "
+"character."
+msgid_plural ""
+"This password is too short. It must contain at least %(min_length)d "
+"characters."
+msgstr[0] "Esta palavra passe é demasiado curta. Deverá conter pelo menos %(min_length)d "
+"caracter."
+msgstr[1] "Esta palavra passe é demasiado curta. Deverá conter pelo menos %(min_length)d "
+"caracteres."
+
+#: validators.py:152
+#, python-format
+msgid "Your password must contain at least %(min_length)d character."
+msgid_plural "Your password must contain at least %(min_length)d characters."
+msgstr[0] ""
+msgstr[1] ""
+
+#: validators.py:189
+#, python-format
+msgid "The password is too similar to the %(verbose_name)s."
+msgstr "A palavra passe é demasiado semelhante a %(verbose_name)s."
+
+#: validators.py:195
+msgid "Your password can't be too similar to your other personal information."
+msgstr ""
+
+#: validators.py:222
+msgid "This password is too common."
+msgstr "Esta palavra passe é demasiado comum."
+
+#: validators.py:227
+msgid "Your password can't be a commonly used password."
+msgstr ""
+
+#: validators.py:237
+msgid "This password is entirely numeric."
+msgstr "Esta palavra passe é composta apenas por números."
+
+#: validators.py:242
+msgid "Your password can't be entirely numeric."
+msgstr ""
+
+#: validators.py:252
+msgid "This password does not contain a digit."
+msgstr "Esta palavra passe não contém um dígito."
+
+#: validators.py:257
+msgid "Your password must contain at least one digit."
+msgstr "A sua palavra passe deverá conter pelo menos um dígito."
+
+#: validators.py:267
+msgid "This password does not contain a punctuation character."
+msgstr "Esta palavra passe não contém um caracter de pontuação."
+
+#: validators.py:272
+msgid "Your password must contain at least one punctuation character."
+msgstr "A sua palavra passe deverá conter pelo menos um caracter de pontuação."
+
+#: validators.py:282
+msgid "This password does not contain an uppercase character."
+msgstr "Esta palavra passe não contém uma letra maiúscula."
+
+#: validators.py:287
+msgid "Your password must contain at least one uppercase character."
+msgstr ""
+
+#: validators.py:297
+msgid "This password does not contain a lowercase character."
+msgstr "Esta palavra passe não contém uma letra minúscula."
+
+#: validators.py:302
+msgid "Your password must contain at least one lowercase character."
+msgstr ""
+
+#: validators.py:317
+#, python-format
+msgid ""
+"This password contains a character repeated more than %d times in a row."
+msgstr ""
+
+#: validators.py:322
+#, python-format
+msgid ""
+"Your password can't contain a character repeated more than %d times in a row."
+msgstr ""
