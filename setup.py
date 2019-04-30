@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from os import path
 import re
 
@@ -42,9 +42,8 @@ setup(
     install_requires=[
     ],
     package_dir={'': '.'},
-    packages=['django_password_validation'],
+    packages=find_packages('.'),
     package_data={
-        'django_password_validation': ['*.gz'],
+        '': ['*.gz', 'locale/*/LC_MESSAGES/django.*'],
     },
-    include_package_data=True,
 )
