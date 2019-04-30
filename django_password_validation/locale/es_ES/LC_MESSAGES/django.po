@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-29 14:49+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-04-30 10:27+0200\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: validators.py:142
 #, python-format
@@ -27,80 +27,87 @@ msgid_plural ""
 "This password is too short. It must contain at least %(min_length)d "
 "characters."
 msgstr[0] ""
+"La contraseña es demasiado corta. Debe tener al menos %(min_length)d "
+"carácter."
 msgstr[1] ""
+"La contraseña es demasiado corta. Debe tener al menos %(min_length)d "
+"caracteres."
 
 #: validators.py:152
 #, python-format
 msgid "Your password must contain at least %(min_length)d character."
 msgid_plural "Your password must contain at least %(min_length)d characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "La contraseña debe tener al menos %(min_length)d carácter."
+msgstr[1] "La contraseña debe tener al menos %(min_length)d caracteres."
 
 #: validators.py:189
 #, python-format
 msgid "The password is too similar to the %(verbose_name)s."
-msgstr ""
+msgstr "La contraseña es demasiado parecida a %(verbose_name)s."
 
 #: validators.py:195
 msgid "Your password can't be too similar to your other personal information."
 msgstr ""
+"Su contraseña no puede parecerse mucho al resto de su información personal."
 
 #: validators.py:222
 msgid "This password is too common."
-msgstr ""
+msgstr "Esta contraseña es demasiado común."
 
 #: validators.py:227
 msgid "Your password can't be a commonly used password."
-msgstr ""
+msgstr "Su contraseña no puede ser una contraseña común."
 
 #: validators.py:237
 msgid "This password is entirely numeric."
-msgstr ""
+msgstr "La contraseña es enteramente numérica."
 
 #: validators.py:242
 msgid "Your password can't be entirely numeric."
-msgstr ""
+msgstr "Su contraseña no puede ser enteramente numérica."
 
 #: validators.py:252
 msgid "This password does not contain a digit."
-msgstr ""
+msgstr "Esta contraseña no contiene ningún número."
 
 #: validators.py:257
 msgid "Your password must contain at least one digit."
-msgstr ""
+msgstr "Su contraseña debe contener por lo menos un número."
 
 #: validators.py:267
 msgid "This password does not contain a punctuation character."
-msgstr ""
+msgstr "Esta contraseña no contiene ningún signo de puntuación."
 
 #: validators.py:272
 msgid "Your password must contain at least one punctuation character."
-msgstr ""
+msgstr "Su contraseña debe contener al menos un signo de puntuación."
 
 #: validators.py:282
 msgid "This password does not contain an uppercase character."
-msgstr ""
+msgstr "Esta contraseña no contiene ningún carácter en mayúsculas."
 
 #: validators.py:287
 msgid "Your password must contain at least one uppercase character."
-msgstr ""
+msgstr "Su contraseña debe contener al menos un carácter en mayúsculas."
 
 #: validators.py:297
 msgid "This password does not contain a lowercase character."
-msgstr ""
+msgstr "Esta contraseña no contiene ningún carácter en minúsculas."
 
 #: validators.py:302
 msgid "Your password must contain at least one lowercase character."
-msgstr ""
+msgstr "Su contraseña debe contener al menos un carácter en minúsculas."
 
 #: validators.py:317
 #, python-format
 msgid ""
 "This password contains a character repeated more than %d times in a row."
 msgstr ""
+"Esta contraseña contiene un carácter repetido más de %d veces seguidas."
 
 #: validators.py:322
 #, python-format
 msgid ""
 "Your password can't contain a character repeated more than %d times in a row."
 msgstr ""
+"Su contraseña no debe contener caracteres repetidos más de %d veces seguidas."
