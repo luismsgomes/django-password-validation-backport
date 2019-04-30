@@ -2,6 +2,7 @@
 #
 # Changelog:
 #
+# 0.4.0: added translations for en_IE, es_ES, fr_FR, ga_IE and pt_PT
 # 0.3.0: deploy as application instead of middleware
 #        added (mostly empty) localization files for en_IE, es_ES, fr_FR, ga_IE and pt_PT
 #        added scripts to extract/compile PO files
@@ -20,7 +21,7 @@
 #    CommonPasswordValidator
 #    NumericPasswordValidator
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 from .validators import \
     get_default_password_validators, \
